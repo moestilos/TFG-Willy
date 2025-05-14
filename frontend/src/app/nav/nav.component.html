@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner:wght@400..700&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<header class="text-gray-400 bg-black">
+  <div class="container mx-auto p-4">
+    <div class="flex justify-between items-center">
+      <!-- Logo Section -->
+      <div class="flex items-center space-x-4">
+        <div class="relative group">
+          <img src="/assets/img/logo.png" alt="Logo" class="h-16 w-16 rounded-full border-2 border-transparent group-hover:border-red-500 transition-all duration-300">
+          <div class="absolute inset-0 rounded-full bg-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <span class="text-3xl text-white hover:text-red-400 transition-colors duration-300 cursor-pointer brand-text">FunkMoes</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex items-center space-x-8">
+        <!-- Search Bar -->
+        <div class="relative">
+          <input type="search" 
+                 placeholder="Buscar diseños..." 
+                 class="bg-gray-900/50 w-64 px-4 py-2 rounded-lg text-white placeholder-gray-400 border border-gray-700 focus:border-red-500 focus:outline-none transition-all duration-300"
+          >
+          <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-400">
+            
+          </button>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex items-center space-x-6 text-lg">
+          <a href="/disenos" class="text-white hover:text-red-400 transition-colors duration-300 flex items-center gap-2 nav-link">
+            Diseños
+          </a>
+          <a href="/cuenta" class="text-white hover:text-red-400 transition-colors duration-300 flex items-center gap-2 nav-link">
+            Cuenta
+          </a>
+          <a href="/carrito" class="text-white hover:text-red-400 transition-colors duration-300 flex items-center gap-2 nav-link">
+            Carrito
+          </a>
+          <a href="/login" class="bg-red-600 hover:bg-yellow-400 text-white px-4 py-2 rounded-lg transition-colors duration-300 nav-link">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" /><path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" /></svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+* {
+  font-family: "Teko", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: 0.025em;
+}
+
+input::placeholder {
+  font-family: "Teko", sans-serif;
+}
+
+.nav-link {
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.brand-text {
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+</style>
