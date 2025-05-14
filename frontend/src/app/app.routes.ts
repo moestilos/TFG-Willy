@@ -1,12 +1,17 @@
 import { Routes } from '@angular/router';
-import { LandingComponent } from './landing/landing.component';
-import { NavComponent } from './nav/nav.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { CartaComponent } from './carta/carta.component';
+import { LandingComponent } from './modules/landing/landing.component';
+import { NavComponent } from './modules/nav/nav.component';
+import { LoginComponent } from './modules/login/login.component';
+import { RegisterComponent } from './modules/register/register.component';
+import { FooterComponent } from './modules/footer/footer.component';
+import { HeaderComponent } from './modules/header/header.component';
+import { CartaComponent } from './modules/carta/carta.component';
+import { ColeccionComponent } from './modules/coleccion/coleccion.component';
+import { TiendacamisetasComponent } from './modules/tiendacamisetas/tiendacamisetas.component';
 
+import { ColeccionsudaderasComponent } from './modules/tiendasudaderas/component/coleccionsudaderas/coleccionsudaderas.component';
+import { TiendasudaderasComponent } from './modules/tiendasudaderas/tiendasudaderas.component';
+import { TiendagorrasComponent } from './modules/tiendagorras/tiendagorras.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
@@ -16,4 +21,9 @@ export const routes: Routes = [
     { path: 'footer', component: FooterComponent },
     { path: 'header', component: HeaderComponent },
     { path: 'carta', component: CartaComponent },
+    { path: 'coleccion', component: ColeccionComponent },
+    { path: 'tiendacamisetas', component: TiendacamisetasComponent },
+    { path: 'tiendasudaderas', component: TiendasudaderasComponent },
+    { path: 'tiendagorras', component: TiendagorrasComponent },
+    { path: 'coleccionsudaderas', component: ColeccionsudaderasComponent },
 ];
