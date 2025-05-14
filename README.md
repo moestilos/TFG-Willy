@@ -143,3 +143,4 @@ Se genera un order, se copian los cart_items a order_items.
 Se marca el pedido como "paid".
 
 Se descuenta el stock de los productos.
+![punkmoes_erd](https://github.com/user-attachments/assets/19a13c23-43e6-4b0f-9afe-97a771c8af28)
