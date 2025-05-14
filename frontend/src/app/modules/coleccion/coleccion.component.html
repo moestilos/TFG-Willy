@@ -2,15 +2,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner:wght@400..700&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Teko:wght@300..700&display=swap" rel="stylesheet">
 
-<section class="min-h-screen py-12" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/assets/img/fondorosa.jpg'); background-attachment: fixed; background-position: center; background-size: cover;">
+<section class="min-h-screen py-12" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/img/fondorosa.jpg'); background-attachment: fixed; background-position: center; background-size: cover;">
     <div class="container mx-auto px-4">
       <h1 class="text-5xl text-white text-center mb-12 font-normal tracking-wide" style="font-family: 'Teko', sans-serif;">Nuestras Colecciones</h1>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-black rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500/50 transition-all duration-300">
-          <div class="relative aspect-square group">
-            <img alt="collection" class="object-cover w-full h-full transition-transform duration-300 absolute inset-0 group-hover:opacity-0" src="/assets/img/cf.png">
-            <img alt="collection hover" class="object-cover w-full h-full transition-transform duration-300 absolute inset-0 opacity-0 group-hover:opacity-100" src="/assets/img/c1.png">
+          <div class="relative aspect-square group overflow-hidden">
+            <img alt="collection" class="object-cover w-full h-full transition-all duration-500 absolute inset-0 transform scale-100 group-hover:scale-110 group-hover:opacity-0" src="/assets/img/cf.png">
+            <img alt="collection hover" class="object-cover w-full h-full transition-all duration-500 absolute inset-0 opacity-0 transform scale-110 group-hover:scale-100 group-hover:opacity-100" src="/assets/img/c1.png">
           </div>
           
           <div class="p-6 border-t border-gray-700 bg-black">
@@ -29,9 +29,9 @@
         </div>
 
         <div class="bg-black rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500/50 transition-all duration-300">
-          <div class="relative aspect-square group">
-            <img alt="collection" class="object-cover w-full h-full transition-transform duration-300 absolute inset-0 group-hover:opacity-0" src="/assets/img/sf.png">
-            <img alt="collection hover" class="object-cover w-full h-full transition-transform duration-300 absolute inset-0 opacity-0 group-hover:opacity-100" src="/assets/img/s1.png">
+          <div class="relative aspect-square group overflow-hidden">
+            <img alt="collection" class="object-cover w-full h-full transition-all duration-500 absolute inset-0 transform scale-100 group-hover:scale-110 group-hover:opacity-0" src="/assets/img/sf.png">
+            <img alt="collection hover" class="object-cover w-full h-full transition-all duration-500 absolute inset-0 opacity-0 transform scale-110 group-hover:scale-100 group-hover:opacity-100" src="/assets/img/s1.png">
           </div>
           
           <div class="p-6 border-t border-gray-700 bg-black">
@@ -50,9 +50,9 @@
         </div>
 
         <div class="bg-black rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500/50 transition-all duration-300">
-          <div class="relative aspect-square group">
-            <img alt="collection" class="object-cover w-full h-full transition-transform duration-300 absolute inset-0 group-hover:opacity-0" src="/assets/img/gf.png">
-            <img alt="collection hover" class="object-cover w-full h-full transition-transform duration-300 absolute inset-0 opacity-0 group-hover:opacity-100" src="/assets/img/g1.png">
+          <div class="relative aspect-square group overflow-hidden">
+            <img alt="collection" class="object-cover w-full h-full transition-all duration-500 absolute inset-0 transform scale-100 group-hover:scale-110 group-hover:opacity-0" src="/assets/img/gf.png">
+            <img alt="collection hover" class="object-cover w-full h-full transition-all duration-500 absolute inset-0 opacity-0 transform scale-110 group-hover:scale-100 group-hover:opacity-100" src="/assets/img/g1.png">
           </div>
           
           <div class="p-6 border-t border-gray-700 bg-black">
@@ -92,5 +92,14 @@
 
 .category {
   font-weight: 300;
+}
+
+.group {
+  perspective: 1000px;
+}
+
+.group img {
+  backface-visibility: hidden;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 </style>
