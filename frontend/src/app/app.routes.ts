@@ -8,7 +8,7 @@ import { HeaderComponent } from './modules/header/header.component';
 import { CartaComponent } from './modules/carta/carta.component';
 import { ColeccionComponent } from './modules/coleccion/coleccion.component';
 import { TiendacamisetasComponent } from './modules/tiendacamisetas/tiendacamisetas.component';
-
+import { ColecciongorrasComponent } from './modules/tiendagorras/component/colecciongorras/colecciongorras.component';
 import { ColeccionsudaderasComponent } from './modules/tiendasudaderas/component/coleccionsudaderas/coleccionsudaderas.component';
 import { TiendasudaderasComponent } from './modules/tiendasudaderas/tiendasudaderas.component';
 import { TiendagorrasComponent } from './modules/tiendagorras/tiendagorras.component';
@@ -26,4 +26,5 @@ export const routes: Routes = [
     { path: 'tiendasudaderas', component: TiendasudaderasComponent },
     { path: 'tiendagorras', component: TiendagorrasComponent },
     { path: 'coleccionsudaderas', component: ColeccionsudaderasComponent },
+    { path: 'colecciongorras', component: ColecciongorrasComponent },
 ];
