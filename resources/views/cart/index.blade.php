@@ -39,13 +39,54 @@
                     <div class="group relative animate-fade-in-up" style="animation-delay: {{ $loop->index * 100 }}ms">
                         <div class="absolute -inset-0.5 bg-gradient-to-r from-red-700 to-red-500 rounded-xl blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
                         <div class="relative bg-black/30 backdrop-blur-md rounded-xl border border-red-500/10 p-6">
-                            <div class="flex items-center justify-between">
-                                <div class="space-y-1">
-                                    <h3 class="text-xl text-white font-light">{{ ucfirst($item->product_type) }} - Modelo {{ $item->product_number }}</h3>
-                                    <p class="text-gray-400">Cantidad: {{ $item->quantity }}</p>
+                            <div class="flex items-center gap-6">
+                                <!-- Imagen del producto -->
+                                <div class="w-24 h-24 rounded-lg overflow-hidden bg-black/50">
+                                    @php
+                                        $prefix = substr($item->product_type, 0, 1); // 'c' para camiseta, 's' para sudadera, 'g' para gorra
+                                    @endphp
+                                    <img src="{{ asset("img/{$prefix}{$item->product_number}.png") }}" 
+                                         alt="{{ $item->product_type }}" 
+                                         class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
                                 </div>
+                                
+                                <div class="flex-1">
+                                    @php
+                                        $names = [
+                                            'camiseta' => [
+                                                'Akatsuki Shadow', 'Shinigami Spirit', 'Sakura Dream', 
+                                                'Ronin Soul', 'Kitsune Magic', 'Kaiju Power',
+                                                'Samurai Code', 'Oni Mask', 'Dragon Fury', 'Zen Master'
+                                            ],
+                                            'sudadera' => [
+                                                'Yokai Night', 'Harajuku Style', 'Tokyo Lights', 
+                                                'Shinobi Shadow', 'Neo Tokyo', 'Shogun Pride',
+                                                'Hannya Spirit', 'Cyber Samurai', 'Geisha Art', 'Kabuki Soul'
+                                            ],
+                                            'gorra' => [
+                                                'Ninja Way', 'Bushido Code', 'Rising Sun', 
+                                                'Katana Edge', 'Lotus Dream', 'Thunder God',
+                                                'Cherry Blossom', 'Dragon Scale', 'Imperial Crown', 'Zen Path'
+                                            ]
+                                        ];
+                                        $productName = $names[$item->product_type][$item->product_number - 1];
+                                    @endphp
+                                    <h3 class="text-white text-xl font-light mb-2">{{ $productName }}</h3>
+                                    <!-- Debugger para ver qué datos tenemos -->
+                                    <div class="flex gap-4 text-sm">
+                                        <p class="text-gray-400">
+                                            <span class="text-red-400">Talla:</span> 
+                                            {{ $item->size ?? 'No disponible' }}
+                                        </p>
+                                        <p class="text-gray-400">
+                                            <span class="text-red-400">Cantidad:</span> 
+                                            {{ $item->quantity ?? 1 }}
+                                        </p>
+                                    </div>
+                                </div>
+
                                 <div class="flex items-center gap-6">
-                                    <p class="text-2xl text-white font-light">${{ $item->price }}</p>
+                                    <p class="text-2xl text-white font-light">${{ number_format($item->price, 2) }}</p>
                                     <form action="{{ route('cart.remove', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

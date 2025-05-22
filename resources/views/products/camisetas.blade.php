@@ -47,11 +47,46 @@
                             <p class="text-2xl text-white font-light mb-6">${{ number_format(19.99 + $i, 2) }}</p>
                             
                             @auth
-                                <form action="{{ route('cart.add') }}" method="POST">
+                                <form action="{{ route('cart.add') }}" method="POST" class="space-y-4">
                                     @csrf
                                     <input type="hidden" name="product_type" value="camiseta">
                                     <input type="hidden" name="product_number" value="{{ $i }}">
                                     <input type="hidden" name="price" value="{{ 19.99 + $i }}">
+                                    
+                                    <!-- Selector de talla -->
+                                    <div class="grid grid-cols-5 gap-2">
+                                        @foreach(['XS', 'S', 'M', 'L', 'XL'] as $size)
+                                            <label class="relative cursor-pointer">
+                                                <input type="radio" name="size" value="{{ $size }}" required
+                                                       class="peer absolute opacity-0">
+                                                <div class="text-center py-2 border border-red-500/30 rounded-lg text-gray-400 
+                                                            peer-checked:bg-gradient-to-r from-red-700 to-red-500 
+                                                            peer-checked:text-white peer-checked:border-transparent
+                                                            hover:border-red-500 transition-all duration-300">
+                                                    {{ $size }}
+                                                </div>
+                                            </label>
+                                        @endforeach
+                                    </div>
+
+                                    <!-- Selector de cantidad -->
+                                    <div class="flex items-center justify-between bg-black/30 rounded-lg border border-red-500/30 p-2">
+                                        <span class="text-gray-400 px-2">Cantidad</span>
+                                        <div class="flex items-center gap-2">
+                                            <button type="button" onclick="decrementQuantity(this)"
+                                                    class="w-8 h-8 rounded-lg border border-red-500/30 text-gray-400 hover:text-white hover:border-red-500 transition-all duration-300">
+                                                -
+                                            </button>
+                                            <input type="number" name="quantity" value="1" min="1" max="10" required
+                                                   class="w-12 bg-transparent text-center text-white border-0 focus:outline-none focus:ring-0"
+                                                   readonly>
+                                            <button type="button" onclick="incrementQuantity(this)"
+                                                    class="w-8 h-8 rounded-lg border border-red-500/30 text-gray-400 hover:text-white hover:border-red-500 transition-all duration-300">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+
                                     <button type="submit" 
                                             class="w-full py-3 px-6 bg-gradient-to-r from-red-700 to-red-500 text-white rounded-lg transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300">
                                         Añadir al carrito →
@@ -73,3 +108,21 @@
     @include('components.footer')
 </body>
 </html>
+
+<script>
+    function incrementQuantity(button) {
+        const input = button.previousElementSibling;
+        const currentValue = parseInt(input.value);
+        if (currentValue < 10) {
+            input.value = currentValue + 1;
+        }
+    }
+
+    function decrementQuantity(button) {
+        const input = button.nextElementSibling;
+        const currentValue = parseInt(input.value);
+        if (currentValue > 1) {
+            input.value = currentValue - 1;
+        }
+    }
+</script>

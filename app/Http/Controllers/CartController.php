@@ -16,18 +16,21 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        $validated = $request->validate([
-            'product_type' => 'required|in:camiseta,sudadera,gorra',
+        $request->validate([
+            'product_type' => 'required|string',
             'product_number' => 'required|integer',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric',
+            'size' => 'required|string',
+            'quantity' => 'required|integer|min:1|max:10'
         ]);
 
         CartItem::create([
             'user_id' => Auth::id(),
-            'product_type' => $validated['product_type'],
-            'product_number' => $validated['product_number'],
-            'price' => $validated['price'],
-            'quantity' => $request->quantity ?? 1
+            'product_type' => $request->product_type,
+            'product_number' => $request->product_number,
+            'price' => $request->price,
+            'size' => $request->size,
+            'quantity' => $request->quantity
         ]);
 
         return redirect()->back()->with('success', 'Producto añadido al carrito');
