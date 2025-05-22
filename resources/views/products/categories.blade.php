@@ -4,64 +4,75 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Categorías - PunkMoes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css'])
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
     <style>
         * {
-            font-family: "Teko", sans-serif;
-            font-optical-sizing: auto;
-            font-style: normal;
+            font-family: "Space Grotesk", sans-serif;
         }
     </style>
 </head>
-<body class="bg-gradient-to-b from-purple-900 via-purple-800 to-purple-900 text-white min-h-screen py-12" 
-      style="background-attachment: fixed; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('img/fondomorado.jpg') }}');">
-    
-    <div class="container mx-auto px-4">
-        <h1 class="text-5xl text-yellow-400 font-bold mb-12 text-center">Nuestras Categorías</h1>
+<body class="min-h-screen bg-black">
+    <x-falling-stars />
+    @include('components.nav')
+
+    <div class="container mx-auto px-4 py-12 relative z-10">
+        <div class="text-center space-y-2 mb-12 animate-fade-in-up">
+            <h1 class="text-4xl md:text-5xl font-light text-white">Nuestras Categorías</h1>
+            <div class="h-1 w-32 bg-gradient-to-r from-red-700 to-red-500 mx-auto rounded-full"></div>
+        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Camisetas -->
-            <a href="{{ route('products.camisetas') }}" 
-               class="bg-black rounded-xl border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden group">
-                <div class="aspect-square relative overflow-hidden">
-                    <img src="{{ asset('img/cf.png') }}" alt="Camisetas" 
-                         class="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110">
-                </div>
-                <div class="p-6 border-t border-gray-700">
-                    <h2 class="text-3xl text-yellow-400 font-bold mb-2">Camisetas</h2>
-                    <p class="text-gray-400">Explora nuestra colección de camisetas</p>
-                </div>
-            </a>
+            <div class="group relative animate-fade-in-up" style="animation-delay: 100ms">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-red-700 to-red-500 rounded-xl blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
+                <a href="{{ route('products.camisetas') }}" 
+                   class="relative flex flex-col bg-black/30 backdrop-blur-md rounded-xl border border-red-500/10 overflow-hidden">
+                    <div class="aspect-square relative overflow-hidden">
+                        <img src="{{ asset('img/cf.png') }}" alt="Camisetas" 
+                             class="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 border-t border-red-500/10">
+                        <h2 class="text-2xl text-white font-light mb-2">Camisetas</h2>
+                        <p class="text-gray-400 text-sm">Explora nuestra colección de camisetas</p>
+                    </div>
+                </a>
+            </div>
 
             <!-- Sudaderas -->
-            <a href="{{ route('products.sudaderas') }}" 
-               class="bg-black rounded-xl border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden group">
-                <div class="aspect-square relative overflow-hidden">
-                    <img src="{{ asset('img/sf.png') }}" alt="Sudaderas" 
-                         class="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110">
-                </div>
-                <div class="p-6 border-t border-gray-700">
-                    <h2 class="text-3xl text-yellow-400 font-bold mb-2">Sudaderas</h2>
-                    <p class="text-gray-400">Descubre nuestras sudaderas</p>
-                </div>
-            </a>
+            <div class="group relative animate-fade-in-up" style="animation-delay: 200ms">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-red-700 to-red-500 rounded-xl blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
+                <a href="{{ route('products.sudaderas') }}" 
+                   class="relative flex flex-col bg-black/30 backdrop-blur-md rounded-xl border border-red-500/10 overflow-hidden">
+                    <div class="aspect-square relative overflow-hidden">
+                        <img src="{{ asset('img/sf.png') }}" alt="Sudaderas" 
+                             class="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 border-t border-red-500/10">
+                        <h2 class="text-2xl text-white font-light mb-2">Sudaderas</h2>
+                        <p class="text-gray-400 text-sm">Descubre nuestras sudaderas</p>
+                    </div>
+                </a>
+            </div>
 
             <!-- Gorras -->
-            <a href="{{ route('products.gorras') }}" 
-               class="bg-black rounded-xl border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden group">
-                <div class="aspect-square relative overflow-hidden">
-                    <img src="{{ asset('img/gf.png') }}" alt="Gorras" 
-                         class="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110">
-                </div>
-                <div class="p-6 border-t border-gray-700">
-                    <h2 class="text-3xl text-yellow-400 font-bold mb-2">Gorras</h2>
-                    <p class="text-gray-400">Mira nuestra selección de gorras</p>
-                </div>
-            </a>
+            <div class="group relative animate-fade-in-up" style="animation-delay: 300ms">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-red-700 to-red-500 rounded-xl blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
+                <a href="{{ route('products.gorras') }}" 
+                   class="relative flex flex-col bg-black/30 backdrop-blur-md rounded-xl border border-red-500/10 overflow-hidden">
+                    <div class="aspect-square relative overflow-hidden">
+                        <img src="{{ asset('img/gf.png') }}" alt="Gorras" 
+                             class="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 border-t border-red-500/10">
+                        <h2 class="text-2xl text-white font-light mb-2">Gorras</h2>
+                        <p class="text-gray-400 text-sm">Mira nuestra selección de gorras</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
+
+    @include('components.footer')
 </body>
 </html>

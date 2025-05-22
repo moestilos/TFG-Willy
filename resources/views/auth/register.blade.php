@@ -1,57 +1,77 @@
-<!-- Google Fonts for Teko -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Scripts -->
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-<!-- Futuristic Register Background -->
-<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f2027] via-[#2c5364] to-[#232526] bg-cover bg-center relative" style="font-family: 'Teko', sans-serif;">
-    <div class="relative w-full max-w-md p-10 rounded-2xl shadow-2xl bg-white/10 backdrop-blur-md border border-cyan-400/30">
-        <!-- Neon border effect -->
-        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-cyan-400 via-transparent to-indigo-600 blur-lg opacity-60 animate-pulse z-0"></div>
-        <div class="relative z-10">
-            <h2 class="text-center text-4xl font-semibold text-cyan-300 tracking-widest mb-8 drop-shadow-lg">Register</h2>
-            
-            <form method="POST" action="{{ route('register') }}">
+<div class="min-h-screen flex items-center justify-center relative font-['Space_Grotesk'] bg-black">
+    <x-falling-stars />
+    
+    <div class="relative w-full max-w-md p-8 rounded-xl bg-black/30 backdrop-blur-md border border-red-500/10 shadow-[0_0_15px_rgba(220,38,38,0.07)] animate-fade-in-up">
+        <!-- Neon effect -->
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-red-700 to-red-500 rounded-xl blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
+        
+        <div class="relative z-10 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-4xl font-light text-white mb-1">Create Account</h2>
+                <div class="h-1 w-32 bg-gradient-to-r from-red-700 to-red-500 mx-auto rounded-full"></div>
+            </div>
+
+            <form method="POST" action="{{ route('register') }}" class="space-y-6">
                 @csrf
+
                 <!-- Name -->
-                <div class="relative mb-8">
-                    <x-text-input id="name" class="peer w-full bg-transparent border-0 border-b-2 border-cyan-400 text-white placeholder-transparent focus:outline-none focus:border-indigo-400 text-lg transition-all duration-300" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Name" />
-                    <label for="name" class="absolute left-0 top-2.5 text-cyan-200 text-lg pointer-events-none transition-all duration-300 peer-focus:-top-5 peer-focus:text-indigo-400 peer-focus:text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-lg peer-placeholder-shown:text-cyan-200">{{ __('Name') }}</label>
-                    <x-input-error :messages="$errors->get('name')" class="mt-2 text-pink-400" />
+                <div class="space-y-1">
+                    <label for="name" class="block text-sm text-gray-300">Name</label>
+                    <input id="name" type="text" name="name" :value="old('name')" required autofocus
+                           class="w-full bg-white/5 border-0 border-b border-red-500/30 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50 placeholder:text-gray-500 transition-all duration-300"
+                           placeholder="Enter your name">
+                    <x-input-error :messages="$errors->get('name')" class="mt-2 text-red-400 text-xs" />
                 </div>
 
                 <!-- Email -->
-                <div class="relative mb-8">
-                    <x-text-input id="email" class="peer w-full bg-transparent border-0 border-b-2 border-cyan-400 text-white placeholder-transparent focus:outline-none focus:border-indigo-400 text-lg transition-all duration-300" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Email" />
-                    <label for="email" class="absolute left-0 top-2.5 text-cyan-200 text-lg pointer-events-none transition-all duration-300 peer-focus:-top-5 peer-focus:text-indigo-400 peer-focus:text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-lg peer-placeholder-shown:text-cyan-200">{{ __('Email') }}</label>
-                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-pink-400" />
+                <div class="space-y-1">
+                    <label for="email" class="block text-sm text-gray-300">Email</label>
+                    <input id="email" type="email" name="email" :value="old('email')" required
+                           class="w-full bg-white/5 border-0 border-b border-red-500/30 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50 placeholder:text-gray-500 transition-all duration-300"
+                           placeholder="Enter your email">
+                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-400 text-xs" />
                 </div>
 
                 <!-- Password -->
-                <div class="relative mb-8">
-                    <x-text-input id="password" class="peer w-full bg-transparent border-0 border-b-2 border-cyan-400 text-white placeholder-transparent focus:outline-none focus:border-indigo-400 text-lg transition-all duration-300" type="password" name="password" required autocomplete="new-password" placeholder="Password" />
-                    <label for="password" class="absolute left-0 top-2.5 text-cyan-200 text-lg pointer-events-none transition-all duration-300 peer-focus:-top-5 peer-focus:text-indigo-400 peer-focus:text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-lg peer-placeholder-shown:text-cyan-200">{{ __('Password') }}</label>
-                    <x-input-error :messages="$errors->get('password')" class="mt-2 text-pink-400" />
+                <div class="space-y-1">
+                    <label for="password" class="block text-sm text-gray-300">Password</label>
+                    <input id="password" type="password" name="password" required
+                           class="w-full bg-white/5 border-0 border-b border-red-500/30 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50 placeholder:text-gray-500 transition-all duration-300"
+                           placeholder="Choose a password">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2 text-red-400 text-xs" />
                 </div>
 
                 <!-- Confirm Password -->
-                <div class="relative mb-8">
-                    <x-text-input id="password_confirmation" class="peer w-full bg-transparent border-0 border-b-2 border-cyan-400 text-white placeholder-transparent focus:outline-none focus:border-indigo-400 text-lg transition-all duration-300" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password" />
-                    <label for="password_confirmation" class="absolute left-0 top-2.5 text-cyan-200 text-lg pointer-events-none transition-all duration-300 peer-focus:-top-5 peer-focus:text-indigo-400 peer-focus:text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-lg peer-placeholder-shown:text-cyan-200">{{ __('Confirm Password') }}</label>
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-pink-400" />
+                <div class="space-y-1">
+                    <label for="password_confirmation" class="block text-sm text-gray-300">Confirm Password</label>
+                    <input id="password_confirmation" type="password" name="password_confirmation" required
+                           class="w-full bg-white/5 border-0 border-b border-red-500/30 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50 placeholder:text-gray-500 transition-all duration-300"
+                           placeholder="Confirm your password">
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-red-400 text-xs" />
                 </div>
 
-                <div class="flex items-center justify-between mt-8">
-                    <a class="text-cyan-300 hover:text-indigo-400 text-sm underline transition-colors duration-200" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
-
-                    <button type="submit" class="relative inline-block px-8 py-2 text-cyan-300 font-semibold text-lg uppercase tracking-widest overflow-hidden border-none bg-gradient-to-r from-cyan-500/30 to-indigo-600/30 rounded shadow transition-all duration-300 hover:from-cyan-400 hover:to-indigo-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
-                        <span class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-indigo-600/20 animate-pulse"></span>
-                        <span class="relative">{{ __('Register') }}</span>
+                <div class="flex flex-col gap-4 pt-4">
+                    <button type="submit" 
+                            class="w-full py-3 px-6 bg-gradient-to-r from-red-700 to-red-500 text-white rounded-lg transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300 flex items-center justify-center gap-2">
+                        <span>Create Account</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
                     </button>
+                    
+                    <div class="text-center">
+                        <a href="{{ route('login') }}" 
+                           class="inline-flex items-center text-sm text-gray-400 hover:text-red-400 transition-colors duration-300 gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                            </svg>
+                            <span>Already have an account? Login</span>
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>
