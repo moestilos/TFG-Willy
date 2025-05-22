@@ -1,10 +1,10 @@
-<header class="sticky top-0 w-full backdrop-blur-md bg-black/80 border-b border-red-500/10 z-50">
+<header class="sticky top-0 w-full backdrop-blur-md bg-[#1a1a2e]/80 border-b border-pink-300/10 z-50">
     <div class="container mx-auto px-4 py-3">
         <div class="flex justify-between items-center">
             <!-- Logo Section -->
             <div class="flex items-center space-x-4">
                 <div class="relative group">
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-red-700 to-red-500 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-pink-300 to-pink-200 rounded-full blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
                     <img src="{{ asset('img/logo.png') }}" alt="Logo" class="relative h-14 w-14 rounded-full border-2 border-transparent group-hover:border-red-500 transition-all duration-500">
                 </div>
                 <a href="{{ url('/') }}" class="group">

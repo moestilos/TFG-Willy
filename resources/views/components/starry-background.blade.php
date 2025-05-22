@@ -14,14 +14,14 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(2px 2px at var(--x) var(--y), white, transparent);
-    background-size: 200px 200px;
+    background-image: radial-gradient(3px 3px at var(--x) var(--y), white, transparent); /* Aumentado de 2px a 3px */
+    background-size: 150px 150px; /* Reducido de 200px para más densidad */
     animation: twinkle 5s infinite;
 }
 
 #stars::after {
-    background-image: radial-gradient(1px 1px at var(--x) var(--y), white, transparent);
-    background-size: 150px 150px;
+    background-image: radial-gradient(1.5px 1.5px at var(--x) var(--y), white, transparent); /* Aumentado de 1px a 1.5px */
+    background-size: 100px 100px; /* Reducido de 150px para más densidad */
     animation-delay: -2.5s;
 }
 </style>

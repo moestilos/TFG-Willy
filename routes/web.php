@@ -5,6 +5,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/cart/add', 'add')->name('cart.add');
         Route::delete('/cart/{id}', 'remove')->name('cart.remove');
     });
+
+    // Rutas de pago
+    Route::post('/checkout', [PaymentController::class, 'checkout'])->name('payment.checkout');
+    Route::get('/checkout/success', [PaymentController::class, 'success'])->name('payment.success');
 });
 
 require __DIR__.'/auth.php';

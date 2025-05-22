@@ -107,9 +107,13 @@
                         <span class="text-gray-400">Total:</span>
                         <span class="text-3xl text-white font-light">${{ $cartItems->sum('price') }}</span>
                     </div>
-                    <button class="w-full py-3 px-6 bg-gradient-to-r from-red-700 to-red-500 text-white rounded-lg transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300">
-                        Proceder al pago →
-                    </button>
+                    <form action="/checkout" method="POST">
+                        @csrf
+                        <button type="submit" 
+                                class="w-full py-3 px-6 bg-gradient-to-r from-red-700 to-red-500 text-white rounded-lg transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300">
+                            Proceder al pago →
+                        </button>
+                    </form>
                 </div>
             </div>
         @endif
