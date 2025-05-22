@@ -12,6 +12,7 @@ import { ColecciongorrasComponent } from './modules/tiendagorras/component/colec
 import { ColeccionsudaderasComponent } from './modules/tiendasudaderas/component/coleccionsudaderas/coleccionsudaderas.component';
 import { TiendasudaderasComponent } from './modules/tiendasudaderas/tiendasudaderas.component';
 import { TiendagorrasComponent } from './modules/tiendagorras/tiendagorras.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },

@@ -1,0 +1,39 @@
+
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: tfg   # nombre personalizado
+    environment:
+      POSTGRES_DB: punkmoes
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: funkmoes
+    ports:
+      - "5436:5432"                    # Puerto cambiado a 5434 para evitar colisión local
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: tfg-backend    # nombre personalizado
+    ports:
+      - "8002:8000"                    # Puerto cambiado a 8001 para evitar conflicto
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: tfg_frontend   # nombre personalizado
+    ports:
+      - "4400:4400"                    # Puerto cambiado a 4201 para evitar conflicto
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
+
+volumes:
+  db_data:
