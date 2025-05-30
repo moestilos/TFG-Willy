@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PurchaseConfirmation;
 
 class CartController extends Controller
 {
@@ -54,12 +56,21 @@ class CartController extends Controller
             'cvv' => 'required|size:3',
         ]);
 
-        // Aquí irá la lógica de procesamiento del pago
-        // Por ahora solo limpiaremos el carrito y mostraremos un mensaje de éxito
+        $cartItems = CartItem::where('user_id', Auth::id())->get();
+        $total = $cartItems->sum('price');
 
+        // Enviar email
+        Mail::to(Auth::user()->email)->send(new PurchaseConfirmation($cartItems, $total));
+
+        // Limpiar carrito
         CartItem::where('user_id', Auth::id())->delete();
 
         return redirect()->route('cart.index')
-            ->with('success', '¡Pago procesado exitosamente! Gracias por tu compra.');
+            ->with('success', '¡Compra realizada con éxito! 🎉')
+            ->with('details', [
+                'message' => 'Hemos enviado un correo electrónico con los detalles de tu pedido.',
+                'total' => $total,
+                'email' => Auth::user()->email
+            ]);
     }
 }

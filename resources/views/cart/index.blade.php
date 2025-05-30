@@ -17,6 +17,17 @@
     @include('components.nav')
     
     <div class="container mx-auto px-4 py-12 relative z-10">
+        @if(session('success'))
+            <div class="mb-8 bg-green-500/10 border border-green-500/20 rounded-lg p-6 text-center animate-fade-in-up">
+                <h2 class="text-3xl text-green-400 mb-4">{{ session('success') }}</h2>
+                @if(session('details'))
+                    <p class="text-gray-400 mb-2">{{ session('details')['message'] }}</p>
+                    <p class="text-gray-400">Total pagado: ${{ number_format(session('details')['total'], 2) }}</p>
+                    <p class="text-gray-400">Correo de confirmación enviado a: {{ session('details')['email'] }}</p>
+                @endif
+            </div>
+        @endif
+
         <div class="text-center space-y-2 mb-12 animate-fade-in-up">
             <h1 class="text-4xl md:text-5xl font-light text-white">Tu Carrito</h1>
             <div class="h-1 w-32 bg-gradient-to-r from-red-700 to-red-500 mx-auto rounded-full"></div>
