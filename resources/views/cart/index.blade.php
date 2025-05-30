@@ -107,11 +107,33 @@
                         <span class="text-gray-400">Total:</span>
                         <span class="text-3xl text-white font-light">${{ $cartItems->sum('price') }}</span>
                     </div>
-                    <form action="/checkout" method="POST">
+                    <form action="{{ route('cart.process-payment') }}" method="POST" class="space-y-4">
                         @csrf
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-400 mb-2">Nombre en la tarjeta</label>
+                                <input type="text" name="card_name" required
+                                    class="w-full px-4 py-2 rounded-lg bg-black/50 border border-red-500/20 text-white focus:border-red-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 mb-2">Número de tarjeta</label>
+                                <input type="text" name="card_number" required maxlength="16"
+                                    class="w-full px-4 py-2 rounded-lg bg-black/50 border border-red-500/20 text-white focus:border-red-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 mb-2">Fecha de expiración</label>
+                                <input type="text" name="expiry" required placeholder="MM/YY" maxlength="5"
+                                    class="w-full px-4 py-2 rounded-lg bg-black/50 border border-red-500/20 text-white focus:border-red-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 mb-2">CVV</label>
+                                <input type="text" name="cvv" required maxlength="3"
+                                    class="w-full px-4 py-2 rounded-lg bg-black/50 border border-red-500/20 text-white focus:border-red-500 focus:outline-none">
+                            </div>
+                        </div>
                         <button type="submit" 
-                                class="w-full py-3 px-6 bg-gradient-to-r from-red-700 to-red-500 text-white rounded-lg transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300">
-                            Proceder al pago →
+                            class="w-full py-3 px-6 bg-gradient-to-r from-red-700 to-red-500 text-white rounded-lg transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300">
+                            Pagar ahora ${{ $cartItems->sum('price') }}
                         </button>
                     </form>
                 </div>

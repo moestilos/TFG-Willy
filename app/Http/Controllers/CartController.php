@@ -44,4 +44,22 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Producto eliminado del carrito');
     }
+
+    public function processPayment(Request $request)
+    {
+        $request->validate([
+            'card_name' => 'required',
+            'card_number' => 'required|size:16',
+            'expiry' => 'required|size:5',
+            'cvv' => 'required|size:3',
+        ]);
+
+        // Aquí irá la lógica de procesamiento del pago
+        // Por ahora solo limpiaremos el carrito y mostraremos un mensaje de éxito
+
+        CartItem::where('user_id', Auth::id())->delete();
+
+        return redirect()->route('cart.index')
+            ->with('success', '¡Pago procesado exitosamente! Gracias por tu compra.');
+    }
 }

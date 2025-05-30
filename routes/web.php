@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/cart', 'index')->name('cart.index');
         Route::post('/cart/add', 'add')->name('cart.add');
         Route::delete('/cart/{id}', 'remove')->name('cart.remove');
+        Route::post('/cart/process-payment', 'processPayment')->name('cart.process-payment');
     });
 
     // Rutas de pago
