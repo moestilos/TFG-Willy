@@ -6,6 +6,8 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,6 +43,20 @@ Route::middleware(['auth'])->group(function () {
     // Rutas de pago
     Route::post('/checkout', [PaymentController::class, 'checkout'])->name('payment.checkout');
     Route::get('/checkout/success', [PaymentController::class, 'success'])->name('payment.success');
+});
+
+// Rutas del panel de administración
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/', function () {
+        if (!Auth::user() || !Auth::user()->is_admin) {
+            return redirect('/');
+        }
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+    
+    Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+        Route::resource('products', AdminProductController::class)->names('admin.products');
+    });
 });
 
 require __DIR__.'/auth.php';
