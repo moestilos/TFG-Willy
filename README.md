@@ -1,28 +1,12 @@
 # FunkMoes
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/tuUsuario/FunkMoes/main/assets/logo.png" alt="FunkMoes Logo" width="200">
-</p>
+
 
 **FunkMoes** es una plataforma web diseñada para la gestión y descubrimiento de colecciones musicales. Este documento describe en detalle el propósito del proyecto, su arquitectura, funcionalidades y pasos para su instalación y uso. Preparado como Trabajo de Fin de Grado (TFG) por Guillermo Mateos De Los Santos Aguilera.
 
 ---
 
-## 📋 Tabla de Contenidos
-1. [Introducción](#introducción)
-2. [Arquitectura y Tecnologías](#arquitectura-y-tecnologías)
-3. [Funcionalidades Principales](#funcionalidades-principales)
-4. [Requisitos](#requisitos)
-5. [Instalación y Configuración](#instalación-y-configuración)
-6. [Desarrollo y Uso](#desarrollo-y-uso)
-7. [Estructura del Proyecto](#estructura-del-proyecto)
-8. [Pruebas](#pruebas)
-9. [Despliegue](#despliegue)
-10. [Contribuciones](#contribuciones)
-11. [Licencia](#licencia)
-12. [Contacto](#contacto)
 
----
 
 ## 1. Introducción
 FunkMoes es una tienda en línea especializada en camisetas, sudaderas y gorros de estilo urbano. Permite a los usuarios navegar por distintas categorías de productos, gestionar su perfil, añadir artículos al carrito y completar pedidos de forma ágil y segura.
