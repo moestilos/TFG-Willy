@@ -1,61 +1,145 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# FunkMoes
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://raw.githubusercontent.com/tuUsuario/FunkMoes/main/assets/logo.png" alt="FunkMoes Logo" width="200">
 </p>
 
-## About Laravel
+**FunkMoes** es una plataforma web diseñada para la gestión y descubrimiento de colecciones musicales. Este documento describe en detalle el propósito del proyecto, su arquitectura, funcionalidades y pasos para su instalación y uso. Preparado como Trabajo de Fin de Grado (TFG) por Guillermo Mateos De Los Santos Aguilera.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Tabla de Contenidos
+1. [Introducción](#introducción)
+2. [Arquitectura y Tecnologías](#arquitectura-y-tecnologías)
+3. [Funcionalidades Principales](#funcionalidades-principales)
+4. [Requisitos](#requisitos)
+5. [Instalación y Configuración](#instalación-y-configuración)
+6. [Desarrollo y Uso](#desarrollo-y-uso)
+7. [Estructura del Proyecto](#estructura-del-proyecto)
+8. [Pruebas](#pruebas)
+9. [Despliegue](#despliegue)
+10. [Contribuciones](#contribuciones)
+11. [Licencia](#licencia)
+12. [Contacto](#contacto)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 1. Introducción
+FunkMoes es una tienda en línea especializada en camisetas, sudaderas y gorros de estilo urbano. Permite a los usuarios navegar por distintas categorías de productos, gestionar su perfil, añadir artículos al carrito y completar pedidos de forma ágil y segura.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 2. Arquitectura y Tecnologías
+- **Backend**: Laravel 10 (PHP 8)
+  - Controladores MVC y rutas RESTful para productos, carrito y pedidos
+  - Autenticación y autorización de usuarios (roles Admin y Cliente)
+  - ORM Eloquent con modelos: `Product`, `Category`, `Cart`, `CartItem`, `Order`, `OrderItem`, `User`
+  - Envío de emails: confirmación de compra con `Mail\PurchaseConfirmation`
+- **Frontend**: Vue.js 3 + Vite
+  - Componentes dinámicos para catálogo, carrito y formulario de checkout
+  - Tailwind CSS para diseño responsive
+  - Estado global con Pinia y comunicación con backend vía Axios
+- **Base de datos**: MySQL (v8) / SQLite (para pruebas locales)
+- **Herramientas**:
+  - Composer para dependencias PHP
+  - npm / yarn para dependencias JS
+  - PHPUnit / Pest para pruebas unitarias y de integración
+  - Docker (opcional para despliegue en contenedores)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 3. Funcionalidades Principales
+1. **Autenticación y registro**: Creación y gestión de cuentas de usuario con roles Cliente y Admin.
+2. **Catálogo de productos**: Listado, filtrado por categoría y búsqueda por nombre.
+3. **Detalle de producto**: Vista detallada con imágenes, descripción, precio y stock disponible.
+4. **Carrito de compra**: Añadir, modificar cantidades y remover artículos antes de la compra.
+5. **Proceso de checkout**: Generación de pedidos, cálculo de totales e impuestos.
+6. **Confirmación por email**: Envío automático de correo tras realizar un pedido.
+7. **Panel de administración**: CRUD de productos, categorías y visualización de pedidos.
+8. **Gestión de pedidos**: Seguimiento de estado y historial de compras por parte del cliente.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 4. Requisitos
+- PHP ≥ 8.0
+- Extensiones: OpenSSL, PDO, Mbstring, Tokenizer, XML
+- MySQL ≥ 5.7 / MariaDB ≥ 10.2
+- Composer
+- Node.js ≥ 14 & npm/yarn
+- Opcional: Docker & Docker Compose
 
-## Laravel Sponsors
+## 5. Instalación y Configuración
+1. Clonar repositorio:
+   ```powershell
+   git clone https://github.com/tuUsuario/FunkMoes.git
+   cd FunkMoes
+   ```
+2. Instalar dependencias PHP y JS:
+   ```powershell
+   composer install
+   npm install
+   ```
+3. Configurar variables de entorno:
+   ```powershell
+   cp .env.example .env
+   php artisan key:generate
+   ```
+4. Crear y migrar base de datos:
+   ```powershell
+   php artisan migrate --seed
+   ```
+5. Iniciar servidor de desarrollo:
+   ```powershell
+   npm run dev    # Frontend
+   php artisan serve  # Backend
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 6. Desarrollo y Uso
+1. Accede a `http://127.0.0.1:8000`.
+2. Regístrate o inicia sesión usando tu cuenta de GitHub/Google.
+3. Explora la sección **Explorar Música** para descubrir recomendaciones.
+4. Crea y gestiona tus playlists desde **Mi Biblioteca**.
+5. Participa en el feed en tiempo real y agrega valoraciones y comentarios.
 
-### Premium Partners
+## 7. Estructura del Proyecto
+```
+app/          # Código fuente Laravel (MVC)
+  Http/
+  Models/
+  Mail/
+bootstrap/    # Bootstrap de la aplicación
+config/       # Archivos de configuración
+database/     # Migraciones y seeders
+public/       # Entrada pública y assets compilados
+resources/    # Vistas Blade, assets SASS y JS
+routes/       # Definición de rutas
+tests/        # Tests unitarios y funcionales
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 8. Pruebas
+- Ejecutar suite completa:
+  ```powershell
+  php artisan test
+  ```
+- Generar cobertura de código con Xdebug o phpdbg:
+  ```powershell
+  ./vendor/bin/phpunit --coverage-html coverage
+  ```
 
-## Contributing
+## 9. Despliegue
+- Con Docker Compose:
+  ```powershell
+  docker-compose up -d --build
+  ```
+- Configurar servidor Apache/Nginx apuntando a `public/`.
+- Variables de entorno en producción ajustadas en `.env`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 10. Contribuciones
+Agradecemos colaboraciones y sugerencias.
+1. Haz fork del proyecto.
+2. Crea una rama feature: `git checkout -b feature/nombre`
+3. Envía tus cambios mediante pull request.
 
-## Code of Conduct
+## 11. Licencia
+Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 12. Contacto
+- **Autor**: Guillermo Mateos De Los Santos Aguilera
+- **Email**: guillermo.moestilos@gmail.com
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+*Última actualización: Julio 2025*
